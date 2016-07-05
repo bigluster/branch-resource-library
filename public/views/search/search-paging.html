@@ -7,7 +7,7 @@
     <a ng-click="changePage(-1)" class="icon prev"></a>
   </li> -->
   &nbsp;|
-  <li class="pageNumber" onclick="searchExchange.setPage({{$}})" ng-class="{active: page==currentPage}" qs-repeat="page in pages" qs-show="withinRange({{$}}, that.data.currentPage, that.data.pages.length, 5)" data-page="{{$}}">
+  <li class="pageNumber" onclick="searchExchange.setPage({{$}}); window.scrollTo(0,0)" ng-class="{active: page==currentPage}" qs-repeat="page in pages" qs-show="withinRange({{$}}, that.data.currentPage, that.data.pages.length, 5)" data-page="{{$}}">
     <a>{{$}}</a>
   </li>
   <!-- <li qs-show="currentPage < that.pages.length - 1">
