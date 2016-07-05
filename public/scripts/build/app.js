@@ -3220,7 +3220,14 @@
         if(resultHandler.process(result)){
           userManager.refresh();
           searchExchange.clear(true);
-          window.location = "#!" + $scope.returnUrl || "/";
+          var pattern = /^https?:\/\//i;
+          if (pattern.test($scope.returnUrl))
+          {
+            window.location = $scope.returnUrl;
+          } else {
+            window.location = "#!" + $scope.returnUrl || "/";
+          }
+
         }
         else{
           $scope.authLoading = false;
