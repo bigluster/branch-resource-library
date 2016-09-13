@@ -67,7 +67,7 @@ app.controller("userController", ["$rootScope","$scope", "$resource", "$state", 
         $rootScope.headTitle = result.data[0].username + " : Qlik Branch Users";
         $rootScope.metaKeys = "Branch, Qlik Branch, Qlik Sense, Qlik, Open Source, Github, Projects, Extensions, Mash-ups, API, QAP, Qlik Analytics Platform";
         $rootScope.metaDesc = "Qlik Branch integrates with Github to host open source projects leveraging Qlik's extensibility and APIs.  Find code to use as a foundation for your next project, share your work, or get inspired."
-        $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+        $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
         
         //$scope.setTab(0);
         delete $scope.userInfo["data"];

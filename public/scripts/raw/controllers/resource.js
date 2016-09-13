@@ -12,7 +12,7 @@ app.controller("resourceController", ["$rootScope","$scope", "$resource", "$stat
   $rootScope.headTitle = "Resource Center: Qlik Branch";
   $rootScope.metaKeys = "Branch, Qlik Branch, Resource Center, Tutorials, Tips, Learning, Getting Started, Knowledge Base, Qlik, Open Source";
   $rootScope.metaDesc = "The Qlik Branch Resource Center is a repository for knowledge created and shared by the Qlik web developer community.  It holds content such as tutorials, tips, tricks, snippets, videos, and anything else that could be helpful in developing with the Qlik platform."
-  $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+  $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
 
 
   picklistService.getPicklistItems("Resource Type", function(items){

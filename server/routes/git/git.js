@@ -86,7 +86,7 @@ router.get("/updatereadme/:id", function(req, res){
 });
 
 router.get("/link", function(req, res){
-  authorizeGit("http://branch.qlik.com/git/linkauthorized", req, res);
+  authorizeGit("http://" + req.headers.host + "/git/linkauthorized", req, res);
 });
 
 router.get("/unlink", function(req, res){
@@ -141,7 +141,7 @@ router.get("/login", function(req, res){
   } else if (req.session.url) {
     delete req.session.url;
   }
-  authorizeGit("http://branch.qlik.com/git/loginsuccessful", req, res);
+  authorizeGit("http://" + req.headers.host + "/git/loginsuccessful", req, res);
 });
 
 router.use("/loginsuccessful", function(req, res, next){

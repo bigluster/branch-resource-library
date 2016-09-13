@@ -18,7 +18,7 @@ module.exports = {
                         let obj = {
                             name: key.substr(7),
                             url: "http://s3.amazonaws.com/" + envconfig.s3.bucket + "/" + key,
-                            branchUrl: "http://branch.qlik.com/" + key
+                            localUrl: key
                         }
                         keys.push(obj)
                     }

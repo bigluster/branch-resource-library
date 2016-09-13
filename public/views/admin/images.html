@@ -3,7 +3,7 @@
         <div class="col-md-4 img-wrapper" ng-repeat="image in images">
             <img title="{{image.name}}" src="{{image.url}}" class="img-responsive" />
             <div class="img-overlay">
-                <span ng-click="copyUrl(image.branchUrl)" class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                <span ng-click="copyUrl(image.localUrl)" class="glyphicon glyphicon-link" aria-hidden="true"></span>
                 <span ng-click="removeImage(image.name)" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </div>
         </div>

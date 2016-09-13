@@ -315,6 +315,7 @@ app.controller("adminController", ["$scope", "$resource", "$state", "$stateParam
   };
 
   $scope.copyUrl = function (url) {
+    url = "http://" + location.host + "/" + url;
     window.prompt("Copy the URL below", url);
   }
 

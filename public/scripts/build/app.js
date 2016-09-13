@@ -3031,6 +3031,7 @@
     };
 
     $scope.copyUrl = function (url) {
+      url = "http://" + location.host + "/" + url;
       window.prompt("Copy the URL below", url);
     }
 
@@ -3359,7 +3360,7 @@
     $rootScope.headTitle = "Welcome to Qlik Branch";
     $rootScope.metaKeys = "Branch, Qlik Branch, Qlik Sense, Qlik, Data Analytics, Data Visualization, QlikView, Developers, APIs, Github, Open Source, Developer Relations, Innovation";
     $rootScope.metaDesc = "Qlik Branch is a game-changing platform for web developers using Qlik's APIs to accelerate innovation in bringing the best ideas to market. Rooted in open source philosophy, all projects are freely distributed and modified, allowing faster collaboration and innovation.";
-    $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+    $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
     Feature.get({}, function(result){
       if(resultHandler.process(result)){
         $scope.features = result.data;
@@ -3410,7 +3411,7 @@
     $rootScope.headTitle = "Open Source Projects on Qlik Branch";
     $rootScope.metaKeys = "Branch, Qlik Branch, Qlik Sense, Qlik, Open Source, Github, Projects, Extensions, Mash-ups, API, QAP, Qlik Analytics Platform";
     $rootScope.metaDesc = "Qlik Branch integrates with Github to host open source projects leveraging Qlik's extensibility and APIs.  Find code to use as a foundation for your next project, share your work, or get inspired."
-    $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+    $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
 
     $scope.dirtyThumbnail = false;
 
@@ -3981,7 +3982,7 @@
       $rootScope.headTitle = "Blog: Qlik Branch";
       $rootScope.metaKeys = "Branch, Qlik Branch, Blog, Articles, Updates, News, Qlik Sense, Qlik, Open Source";
       $rootScope.metaDesc = "The Qlik Branch Blog is a place for developers to read helpful and interesting articles about using our APIs as well as news and communications about anything relevant to developers."
-      $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+      $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
     
 
       if ($stateParams.blogId) {
@@ -4302,7 +4303,7 @@
     $rootScope.headTitle = "Resource Center: Qlik Branch";
     $rootScope.metaKeys = "Branch, Qlik Branch, Resource Center, Tutorials, Tips, Learning, Getting Started, Knowledge Base, Qlik, Open Source";
     $rootScope.metaDesc = "The Qlik Branch Resource Center is a repository for knowledge created and shared by the Qlik web developer community.  It holds content such as tutorials, tips, tricks, snippets, videos, and anything else that could be helpful in developing with the Qlik platform."
-    $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+    $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
 
 
     picklistService.getPicklistItems("Resource Type", function(items){
@@ -4784,7 +4785,7 @@
           $rootScope.headTitle = result.data[0].username + " : Qlik Branch Users";
           $rootScope.metaKeys = "Branch, Qlik Branch, Qlik Sense, Qlik, Open Source, Github, Projects, Extensions, Mash-ups, API, QAP, Qlik Analytics Platform";
           $rootScope.metaDesc = "Qlik Branch integrates with Github to host open source projects leveraging Qlik's extensibility and APIs.  Find code to use as a foundation for your next project, share your work, or get inspired."
-          $rootScope.metaImage = "http://branch.qlik.com/resources/branch_logo.png";
+          $rootScope.metaImage = "http://" + location.host + "/resources/branch_logo.png";
           
           //$scope.setTab(0);
           delete $scope.userInfo["data"];
