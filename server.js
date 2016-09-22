@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     AWS = require("aws-sdk"),
     request = require("request"),
     bodyParser = require('body-parser');
+const marketo = require("./server/marketo/marketo")
 
 //var mode = "release";
 var mode = "debug";
@@ -89,6 +90,34 @@ app.use(passport.session());
 
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb'}));
+
+app.use((req, res, next) => {
+  if(req.isAuthenticated()) {
+        if (!req.user.access || !req.user.access.branch) {
+          marketo.accessedSite(req.user, "Branch")
+              .then(() => {
+                if(!req.user.access) {
+                  req.user.access = {
+                    branch: true
+                  }
+                } else {
+                  req.user.access.branch = true
+                }
+                req.user.save((err) => {
+                  next()
+                })
+              })
+              .catch((err) => {
+                next()
+              })
+        } else {
+          next()
+        }
+  } else {
+    next();
+  }
+
+});
 
 app.get('/', function(req, res){
   res.render(__dirname+'/server/views/index.jade', {isAuthenticated: req.isAuthenticated(), user: req.user, mode: mode});

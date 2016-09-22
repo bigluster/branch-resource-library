@@ -1,20 +1,6 @@
 const config = require('../../config')
 const Marketo = require('node-marketo-rest')
-const git = require('github')
 const parse = require("parse-name").parse
-const GitHub = new git({
-  // required
-  version: "3.0.0",
-  // optional
-  debug: false,
-  protocol: "https",
-  host: "api.github.com", // should be api.github.com for GitHub
-  pathPrefix: "", // for some GHEs; none for GitHub
-  timeout: 5000,
-  headers: {
-    "user-agent": "qlik-branch" // GitHub is happy with a unique user agent
-  }
-})
 
 module.exports = {
   syncUser: (user) => {
@@ -46,6 +32,30 @@ module.exports = {
       } catch(e) {
         console.log("ISSUE WITH MARKETO", e)
         resolve()
+      }
+    })
+  },
+  accessedSite: (user, incentive) => {
+    return new Promise((resolve, reject) => {
+      try {
+        if(config.marketo == null) {
+          reject()
+        } else {
+          const marketo = new Marketo(config.marketo)
+          const testLead = {
+            email: user.email,
+            Incentive__c: incentive
+          }
+          marketo.lead.createOrUpdate([testLead])
+              .then(() => { resolve() })
+              .catch((err) => {
+                console.log("ISSUE WITH MARKETO - ACCESSEDSITE", err)
+                reject()
+              })
+        }
+      } catch(e) {
+        console.log("ISSUE WITH MARKETO - ACCESSEDSITE", e)
+        reject()
       }
     })
   }

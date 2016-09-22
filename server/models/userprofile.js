@@ -1,6 +1,17 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+var accessSchema = new Schema({
+  branch: {
+    type: Boolean,
+    default: false
+  },
+  playground: {
+    type: Boolean,
+    default: false
+  }
+})
+
 var userProfileSchema = new Schema({
   userId: Schema.ObjectId,
   email: {
@@ -48,7 +59,8 @@ var userProfileSchema = new Schema({
   },
   createdate_num: Number,
   lastvisit: Date,
-  lastvisit_num: Number
+  lastvisit_num: Number,
+  access: accessSchema
 });
 
 module.exports = mongoose.model('userprofiles', userProfileSchema);
